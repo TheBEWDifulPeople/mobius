@@ -1,4 +1,9 @@
 Mobius::Application.routes.draw do
-  devise_for :users
 	root "home#index"
+
+	resources :posts
+
+	get "/search", to: "posts#search"
+	get "profile", to: "profile#index"
+	devise_for :users
 end

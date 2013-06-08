@@ -1,0 +1,14 @@
+<h2>Posts</h2>
+<% @posts.each do |post| %>
+	<ul class="thumbnails">
+		<li class="span4">
+			<div class="thumbnail">
+				<a href="posts/<%= post.id %>"><p style="font-weight: bold;"><%= post.img_url %></p></a>
+				<a href="<%= post.img_url %>" class="thumbnail">
+					<img src="<%= post.img_url %>" alt=""/>
+				</a>
+				<a class="btn btn-mini" href="">Favorite</a>
+			</div>
+		</li>
+	</ul>
+<% end %>

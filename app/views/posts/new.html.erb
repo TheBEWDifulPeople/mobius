@@ -1,0 +1,7 @@
+<h2>Post media</h2>
+
+<%= form_for @posts do |f| %>
+	<%= f.label :img_url, "Media URL:"%>
+	<%= f.text_field :img_url %>
+	<%= f.submit "Post Media"%>
+<% end %>

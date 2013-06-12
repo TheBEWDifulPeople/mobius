@@ -11,7 +11,28 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130607010506) do
+ActiveRecord::Schema.define(version: 20130612042817) do
+
+  create_table "comments", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "post_id"
+    t.text     "comment"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "comments", ["post_id"], name: "index_comments_on_post_id"
+  add_index "comments", ["user_id"], name: "index_comments_on_user_id"
+
+  create_table "favorites", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "post_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "favorites", ["post_id"], name: "index_favorites_on_post_id"
+  add_index "favorites", ["user_id"], name: "index_favorites_on_user_id"
 
   create_table "posts", force: true do |t|
     t.string   "quoted_from"
@@ -19,6 +40,15 @@ ActiveRecord::Schema.define(version: 20130607010506) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "tags", force: true do |t|
+    t.integer  "post_id"
+    t.string   "tag"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "tags", ["post_id"], name: "index_tags_on_post_id"
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false

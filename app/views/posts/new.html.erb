@@ -1,7 +1,13 @@
 <h2>Post media</h2>
+<% if @posts.errors.any? %>
+	<div class="alert">
+	<button type="button" class="close" data-dismiss="alert">&times;</button>
+	<strong>Warning!</strong> We can't process your link because it's invalid.  Make sure it starts with, "http".
+	</div>
+<% end %>
 
 <%= form_for @posts do |f| %>
-	<%= f.label :img_url, "Media URL:"%>
-	<%= f.text_field :img_url %>
-	<%= f.submit "Post Media"%>
+	<%= f.label :img_url, "Media URL:", class: "lead" %>
+	<%= f.text_field :img_url %><br>
+	<%= f.submit "Post Media", class: "btn btn-mini" %>
 <% end %>

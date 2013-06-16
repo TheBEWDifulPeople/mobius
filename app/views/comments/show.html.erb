@@ -1,0 +1,8 @@
+<h2>Comments</h2>
+<%= @comments.each do |comment| %>
+	<h3>comment.post_id</h3>
+	<dl class="dl-horizontal">
+	  <dt>comment.user_id</dt>
+	  <dd>comment.comment</dd>
+	</dl>
+<% end %>

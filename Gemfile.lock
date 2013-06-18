@@ -1,4 +1,16 @@
 GIT
+  remote: git://github.com/heroku/rails3_serve_static_assets.git
+  revision: 84910ceb4ca2851d650e66d3b22f5008acf253f8
+  specs:
+    rails3_serve_static_assets (0.0.1)
+
+GIT
+  remote: git://github.com/heroku/rails_log_stdout.git
+  revision: 01b5bcc572e3baed1618f4068920dd83bd491fb2
+  specs:
+    rails_log_stdout (0.0.1)
+
+GIT
   remote: git://github.com/seyhunak/twitter-bootstrap-rails.git
   revision: 0afff97ed0ce327688b0b049acc9744b3835ff37
   specs:
@@ -82,6 +94,7 @@ GEM
     minitest (4.7.4)
     multi_json (1.7.6)
     orm_adapter (0.4.0)
+    pg (0.15.1)
     polyglot (0.3.3)
     rack (1.5.2)
     rack-test (0.6.2)
@@ -150,7 +163,10 @@ DEPENDENCIES
   jbuilder (~> 1.0.1)
   jquery-rails
   less-rails
+  pg
   rails (= 4.0.0.rc1)
+  rails3_serve_static_assets!
+  rails_log_stdout!
   sass-rails (~> 4.0.0.rc1)
   sdoc
   sqlite3

@@ -32,11 +32,20 @@ group :doc do
   gem 'sdoc', require: false
 end
 
+group :production do
+	# bootstrap specific gems
+	gem 'rails_log_stdout', github: 'heroku/rails_log_stdout'
+	gem 'rails3_serve_static_assets', github: 'heroku/rails3_serve_static_assets'
+	gem 'pg'
+end
+
 gem 'devise', git: "https://github.com/plataformatec/devise.git", branch:  "rails4"
 
 gem "therubyracer"
 gem "less-rails" #Sprockets (what Rails 3.1 uses for its asset pipeline) supports LESS
 gem "twitter-bootstrap-rails", :git => 'git://github.com/seyhunak/twitter-bootstrap-rails.git'
+
+
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

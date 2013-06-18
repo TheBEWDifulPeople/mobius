@@ -7,17 +7,24 @@
 				<img src="<%= @post.img_url %>" alt=""/>
 			</a>
 			<a href="<%= @post.img_url %>"><%= @post.img_url %></a><br>
-			<small>Posted by: </small><br><small>Tags: </small> 
-			<a class="btn btn-mini pull-right" href="">Favorite</a>
-			<a class="btn btn-mini pull-right" href="">Comment</a>
+			<small>Posted by: </small><br><small>Tags: <%= convert_to_tag_link @post.tag_list %></small> 
+			<a class="btn btn-mini pull-right" href="#"><i class="icon-star"></i> Favorite</a>	
+				<%= form_for @post do |f| %>
+				<%= f.label  :tag_list %>
+				<%= f.text_field :tag_list %>
+				<%= f.submit "Add tags" %>
+			<% end %>
 		</div>
 	</li>
 </ul>
+<% num = 1%>
 <% @comments.each do |comment| %>
+	
 	<dl class="dl-horizontal">
-	  <dt><%= comment.user_id %></dt>
+	  <dt><%= num %> <%= comment.user.email %></dt>
 	  <dd><%= comment.comment %></dd>
 	</dl>
+	<% num += 1 %>
 <% end %>
 
 <h3>Comments:</h3>

@@ -46,7 +46,12 @@
           <a class="brand" href="/">Mobius</a>
           <div class="container-fluid nav-collapse">
             <ul class="nav">
-              <li><%= link_to "Post", "/posts/new"  %></li>
+            <% if user_signed_in? %>
+              <li><%= link_to "Sign Out", destroy_user_session_path, method: :delete %></li>
+            <% else %>
+              <li><%= link_to "Sign In", "/users/sign_in"  %></li>
+            <% end %>
+              <li><%= link_to "Post Media", "/posts/new"  %></li>
               <li><%= link_to "Show all Posts", "/posts"  %></li>
             </ul>
             <%= form_tag "search", method: :get do %>

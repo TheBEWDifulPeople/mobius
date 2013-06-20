@@ -5,12 +5,10 @@
 	<strong>Warning!</strong> We can't process your link because it's invalid.  Make sure it starts with, "http".
 	</div>
 <% end %>
-<fieldset>
 	<%= form_for @posts do |f| %>
-		<%= f.label :img_url, "Media URL:", class: "lead" %>
-		<%= f.text_field :img_url %><br>
-		<%= f.label :tag_list %>
-		<%= f.text_field :tag_list %><br>
-		<%= f.submit "Post Media", class: "btn btn-mini" %>
+	<%= f.label :img_url, "Media URL:", class: "lead" %>
+	<%= f.text_field :img_url %><br>
+	<%= f.label :tag_list %>
+	<%= f.text_field :tag_list %><br>
+	<%= f.submit "Post Media", class: "btn btn-mini", redirect_to: @posts %>
 	<% end %>
-</fieldset>

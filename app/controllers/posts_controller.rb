@@ -24,11 +24,13 @@ class PostsController < ApplicationController
 
 		#fail
 		param_quoted_from = URI.parse(post_params['img_url']).host
-		@posts = Post.new ({img_url: post_params['img_url'], quoted_from: param_quoted_from})
+		posts = Post.new ({img_url: post_params['img_url'], quoted_from: param_quoted_from, tag_list: post_params['tag_list']})
 
-		if @posts.save
+	    current_user.posts << posts
+
+		if posts.save
 			# save succeeded, redirect to @posts (index)
-			redirect_to @posts
+			redirect_to posts_path
 		else
 			# save failed, render (not redirect to ) new 
 			render 'new'

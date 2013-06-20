@@ -6,8 +6,11 @@ Mobius::Application.routes.draw do
 		resources :favorites, only: [:create]
 	end
 	resources :categories, only: [:show]
+	resources :profiles, only: [:show]
 
+  get "/about", to: "static#about"
 	get "/search", to: "posts#search"
-	get "profile", to: "profile#index"
+	get "/categories/posts/:id", to: "posts#show"
+	get "/profiles/posts/:id", to: "posts#show"
 	devise_for :users
 end

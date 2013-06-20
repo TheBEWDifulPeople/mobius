@@ -1,12 +1,17 @@
-<ul class="thumbnails">
-<% @posts.each do |post| %>
+<div class="page-header">
+  <h1>All posts by: <%= @user.email %> | <small><%= link_to "Home", root_path %></small></h1>
+</div>
+<% @user.posts.each do |post| %>
+	<ul class="thumbnails">
 		<li class="span8">
 			<div class="thumbnail">
 				<a href="<%= post.quoted_from %>"><h3 style="font-weight: bold;"><%= post.quoted_from %></h3></a>
-				<a href="posts/<%= post.id %>" class="thumbnail"><img src="<%= post.img_url %>" alt=""/></a>
+				<a href="posts/<%= post.id %>" class="thumbnail">
+					<img src="<%= post.img_url %>" alt=""/>
+				</a>
 				<a href="<%= post.img_url %>"><%= post.img_url %></a><br>
 				<small>Posted by: <%= link_to post.user.email, profile_path(post.user) %></small><br><small>Tags: <%= convert_to_tag_link post.tag_list %></small> 
 			</div>
 		</li>
+	</ul>
 <% end %>
-</ul>

@@ -7,28 +7,40 @@
 				<img src="<%= @post.img_url %>" alt=""/>
 			</a>
 			<a href="<%= @post.img_url %>"><%= @post.img_url %></a><br>
-			<small>Posted by: </small><br><small>Tags: <%= convert_to_tag_link @post.tag_list %></small> 
-			<a class="btn btn-mini pull-right" href="#"><i class="icon-star"></i> Favorite</a>	
-				<%= form_for @post do |f| %>
-				<%= f.label  :tag_list %>
-				<%= f.text_field :tag_list %>
-				<%= f.submit "Add tags" %>
-			<% end %>
+			<small>Posted by: <%= link_to @post.user.email, profile_path(@post.user) %></small>  |  <small>Tags: <%= convert_to_tag_link @post.tag_list %></small> 
+				
 		</div>
 	</li>
 </ul>
-<% num = 1%>
-<% @comments.each do |comment| %>
-	
-	<dl class="dl-horizontal">
-	  <dt><%= num %> <%= comment.user.email %></dt>
-	  <dd><%= comment.comment %></dd>
-	</dl>
+<div class="page-header">
+  <h3>Comments:</h3>
+</div>
+<table class="table table-striped">
+	<thead>
+		<tr>
+			<th>#</th>
+			<th>User</th>
+			<th>Comment</th>
+		</tr>
+	</thead>
+	<tbody>
+	<% num = 1 %>
+	<% @comments.each do |comment| %>
+	<tr>
+		<td><%= num %></td>
+		<td><%= comment.user.email %></td>
+		<td><%= comment.comment %></td>
+	</tr>
 	<% num += 1 %>
-<% end %>
-
-<h3>Comments:</h3>
-<%= form_for [@post, @comment] do |c| %>
-	<%= c.text_area :comment%><br>
-	<%= c.submit "Add Comment.", class: "btn btn-mini"%>
+	<% end %>
+	</tbody>
+</table>
+<% if user_signed_in? %>
+	<h3>Add a Comment:</h3>
+	<%= form_for [@post, @comment] do |c| %>
+		<%= c.text_area :comment %><br>
+		<%= c.submit "Add Comment.", class: "btn btn-mini"%>
+	<% end %>
+<% else %>
+	<p>Sign in to post comments.</p>
 <% end %>

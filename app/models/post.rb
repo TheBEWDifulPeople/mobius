@@ -5,7 +5,8 @@ class Post < ActiveRecord::Base
 	has_many :comments
 	has_many :tags
 	has_many :categories, through: :tags
-
+	belongs_to :user
+  
 	def self.search_for(query)
 		where('img_url LIKE :search_query OR quoted_from', search_query: "%#{query}%")
 	end
@@ -14,9 +15,21 @@ class Post < ActiveRecord::Base
 		self.categories.pluck(:name)
 	end
 
+	# def tag_list=(tags)
+	# 	tags.split(", ").each do |tag|
+	# 	    self.categories << Category.where(name: tag).first_or_create
+	# 	end
+	# end
+
 	def tag_list=(tags)
-		tags.split(", ").each do |tag|
-		    self.categories << Category.where(name: tag).first_or_create
+		tags = tags.split(/,\s*/)
+
+		tags.each do |tag|
+			unless self.categories.find_by name: tag
+				self.categories << Category.where(name: tag).first_or_create
+			end
 		end
+		self.categories.where.not(name: tags).destroy_all
 	end
+	
 end

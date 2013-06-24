@@ -11,3 +11,7 @@
  *= require_self
  *= require_tree .
  */
+
+.row-fluid {
+	width: 100%;
+}

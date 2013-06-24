@@ -51,7 +51,7 @@
 				  <li><%= link_to "Post Media", "/posts/new"  %></li>
               <li><%= link_to "Show all posts by: #{current_user.email}",  profile_path(current_user)  %></li>
 			  <% end  %>
-				  <li><%= link_to "About", static_about_path  %></li>
+				  <li><%= link_to "About", "/about"  %></li>
             </ul>
 				
             <%= form_tag "search", method: :get do %>
@@ -63,15 +63,9 @@
       </div>
     </div>
     <div class="container-fluid">
-      <div class="row-fluid">
-        <div class="span2"></div>
-        <div class="span9">
           <%= bootstrap_flash %>
           <%= yield %>
-        </div>
-      </div><!--/row-->
-
-      <footer>
+      <footer class="pull-right">
         <p>&copy; Mobius 2013</p>
       </footer>
 

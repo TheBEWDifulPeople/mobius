@@ -6,9 +6,9 @@ class Post < ActiveRecord::Base
 	has_many :tags
 	has_many :categories, through: :tags
 	belongs_to :user
-  
+
 	def self.search_for(query)
-		where('img_url LIKE :search_query OR quoted_from', search_query: "%#{query}%")
+		where('img_url LIKE :search_query OR quoted_from LIKE :search_query', search_query: "%#{query}%")
 	end
 
 	def tag_list
@@ -31,5 +31,5 @@ class Post < ActiveRecord::Base
 		end
 		self.categories.where.not(name: tags).destroy_all
 	end
-	
+
 end

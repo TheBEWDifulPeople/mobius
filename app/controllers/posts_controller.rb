@@ -1,5 +1,4 @@
 class PostsController < ApplicationController
-	require 'URI'
 
 	def index
 		@posts = Post.all
@@ -19,7 +18,7 @@ class PostsController < ApplicationController
 		# coming in from /posts/new
 		# {"utf8"=>"✓",
  		# "authenticity_token"=>"0ss3yZNjOXc2kdmgeyKmvFzVQ/Tb6dXl9FOkMqn/9zc=",
- 		# "post" =>{"img_url"=>"http://deadfix.com/wp-content/uploads/2012/05/Deconstructed-Head-Illustrations-by-Smithe.jpg"}, 
+ 		# "post" =>{"img_url"=>"http://deadfix.com/wp-content/uploads/2012/05/Deconstructed-Head-Illustrations-by-Smithe.jpg"},
  		# "commit"=>"Post Media"}
 
 		#fail
@@ -32,7 +31,7 @@ class PostsController < ApplicationController
 			# save succeeded, redirect to @posts (index)
 			redirect_to posts_path
 		else
-			# save failed, render (not redirect to ) new 
+			# save failed, render (not redirect to ) new
 			render 'new'
 		end
 	end
